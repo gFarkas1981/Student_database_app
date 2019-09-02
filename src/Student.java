@@ -6,7 +6,7 @@ public class Student {
     private String lastName;
     private String gradeYear;
     private static int costOfCourse = 600;
-    private String courses = null;
+    private String courses = "";
     private int tuitionBalance = 0;
     private static int id = 1000;
     private String studentID;
@@ -53,7 +53,7 @@ public class Student {
 
             if (!course.toUpperCase().equals("Q")) {
 
-                courses = courses + "\n" + course;
+                courses = courses + "\n   " + course;
                 tuitionBalance = tuitionBalance + costOfCourse;
 
             } else {
@@ -64,7 +64,7 @@ public class Student {
         }
 
         System.out.println("Enrolled in: " + courses);
-        System.out.println("Tuition balance: " + tuitionBalance);
+        System.out.println("Tuition balance: $" + tuitionBalance);
 
     }
 
@@ -80,7 +80,7 @@ public class Student {
     public void payTuition() {
 
         viewBalance();
-        System.out.println("Enter your payment: $");
+        System.out.print("Enter your payment: $");
         Scanner in = new Scanner(System.in);
         int payment = in.nextInt();
         tuitionBalance = tuitionBalance - payment;
@@ -90,6 +90,15 @@ public class Student {
     }
 
     // Show status
+    @Override
+    public String toString() {
+
+        return "Name: " + firstName + " " + lastName + "\n" +
+                "Grade level: " + gradeYear + "\n" +
+                "Courses enrolled: " + courses + "\n" +
+                "Balance: $" + tuitionBalance;
+
+    }
 
 
 }
